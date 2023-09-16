@@ -13,19 +13,10 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.KlijentId)
-            </th>
-            <th>
                 @Html.DisplayNameFor(model => model.Ime)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Prezime)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Telefon)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Email)
             </th>
             <th></th>
         </tr>
@@ -40,9 +31,9 @@
                 @Html.DisplayFor(modelItem => item.Prezime)
             </td>
             <td>
-                    @Html.ActionLink("Edit", "Edit", new { id=item.KlijentId }) |
-                    @Html.ActionLink("Details", "Details", new { id=item.KlijentId }) |
-                @Html.ActionLink("Delete", "Delete", new { id=item.KlijentId })
+                    @Html.ActionLink("Izmeni", "Edit", new { id=item.KlijentId }) |
+                    @Html.ActionLink("Prikaži detalje", "Details", new { id=item.KlijentId }) |
+                @Html.ActionLink("Obriši", "Delete", new { id=item.KlijentId })
             </td>
         </tr>
 }

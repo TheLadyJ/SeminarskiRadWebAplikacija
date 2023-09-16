@@ -92,13 +92,20 @@ namespace WebAppMVC.Controllers
 
             klijentZaIzmenu.Ime = model.Ime;
             klijentZaIzmenu.Prezime = model.Prezime;
-            klijentZaIzmenu.Telefon = model.Prezime;
+            klijentZaIzmenu.Telefon = model.Telefon;
             klijentZaIzmenu.Email = model.Email;
 
             unitOfWork.KlijentRepository.Update(klijentZaIzmenu);
             unitOfWork.Save();
 
             return RedirectToAction("Index");
+        }
+
+        [HttpGet]
+        public IActionResult Details(int id)
+        {
+            Klijent model = unitOfWork.KlijentRepository.SearchByIntId(id);
+            return View(model);
         }
     }
 }

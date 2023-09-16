@@ -18,5 +18,11 @@ namespace WebAppMVC.Controllers
             List<Sto> model = unitOfWork.StoRepository.GetAll();
             return View(model);
         }
+
+        public IActionResult Create()
+        {
+            List<Sto> model = unitOfWork.StoRepository.GetAll();
+            return View(model);
+        }
     }
 }
