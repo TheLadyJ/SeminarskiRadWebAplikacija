@@ -1,0 +1,59 @@
+﻿@model IEnumerable<Domain.Sto>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Lista svih stolova</h1>
+
+<p>
+    <a asp-action="Create">Kreiraj novi sto</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.RbStola)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Kapacitet)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CenaStola)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProizvodjacId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MestoId)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.RbStola)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Kapacitet)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CenaStola)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProizvodjacId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MestoId)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

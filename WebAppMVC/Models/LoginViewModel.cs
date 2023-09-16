@@ -4,9 +4,9 @@ namespace WebAppMVC.Models
 {
     public class LoginViewModel
     {
-        [Required]
+        [Required(ErrorMessage = "Obavezno polje")]
         public string KorisnickoIme { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Obavezno polje")]
         public string Lozinka { get; set; }
     }
 }

@@ -1,0 +1,83 @@
+﻿@model IEnumerable<Domain.Rezervacija>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Lista svih rezervacija</h1>
+
+<p>
+    <a asp-action="Create">Kreiraj novu rezervaciju</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.RezervacijaId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DatumVremeOd)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DatumVremeDo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TipProslaveId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UkupnaCena)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RadnikId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.KlijentId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MestoId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.KeteringMeniId)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.RezervacijaId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DatumVremeOd)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DatumVremeDo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TipProslaveId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UkupnaCena)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RadnikId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.KlijentId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MestoId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.KeteringMeniId)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

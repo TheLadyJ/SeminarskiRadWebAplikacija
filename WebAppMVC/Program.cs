@@ -28,7 +28,7 @@ internal class Program
         builder.Services.ConfigureApplicationCookie(options =>
         {
             options.LoginPath = "/Authentication/Login";
-            options.AccessDeniedPath = "/Authentication/Forbidden";
+            options.AccessDeniedPath = "/Authentication/Login";
 
             options.ExpireTimeSpan = TimeSpan.FromMinutes(5);
             options.SlidingExpiration = true;
@@ -42,7 +42,7 @@ internal class Program
         // Configure the HTTP request pipeline.
         if (!app.Environment.IsDevelopment())
         {
-            app.UseExceptionHandler("/Authentication/Forbidden");
+            app.UseExceptionHandler("/Home/Index");
             // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
             app.UseHsts();
         }
@@ -57,7 +57,7 @@ internal class Program
 
         app.MapControllerRoute(
             name: "default",
-            pattern: "{controller=Authentication}/{action=Login}/{id?}");
+            pattern: "{controller=Home}/{action=Index}/{id?}");
 
         app.Run();
     }
