@@ -30,22 +30,31 @@ namespace DataAccessLayer.Implementations
 
         public List<Sto> GetAll()
         {
-            return context.Stolovi.ToList();
+            return context.Stolovi.Include(s => s.Proizvodjac).Include(s => s.Mesto).ToList();
+        }
+
+        public bool PossibleToDelete(int RbStola)
+        {
+            if (context.Rezervacije.Any(r => r.Stolovi.Any(s => s.RbStola == RbStola)))
+            {
+                return false;
+            }
+            return true;
         }
 
         public List<Sto> SearchBy(Expression<Func<Sto, bool>> predicate)
         {
-            return context.Stolovi.Where(predicate).ToList();
+            return context.Stolovi.Where(predicate).Include(s => s.Proizvodjac).Include(s => s.Mesto).ToList();
         }
 
         public Sto SearchById(Sto entity)
         {
-            return context.Stolovi.Single(s => s.RbStola == entity.RbStola);
+            return context.Stolovi.Include(s => s.Proizvodjac).Include(s => s.Mesto).Single(s => s.RbStola == entity.RbStola);
         }
 
         public Sto SearchByIntId(int rbStola)
         {
-            return context.Stolovi.Single(s => s.RbStola == rbStola);
+            return context.Stolovi.Include(s => s.Proizvodjac).Include(s => s.Mesto).Single(s => s.RbStola == rbStola);
         }
 
         public void Update(Sto entity)

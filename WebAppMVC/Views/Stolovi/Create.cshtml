@@ -1,0 +1,42 @@
+﻿@model WebAppMVC.Models.CreateStoViewModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Kreiranje novog stola</h1>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Kapacitet" class="control-label"></label>
+                <input asp-for="Kapacitet" class="form-control" />
+                <span asp-validation-for="Kapacitet" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CenaStola" class="control-label"></label>
+                <input asp-for="CenaStola" class="form-control" />
+                <span asp-validation-for="CenaStola" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MestoId" class="control-label"></label>
+                <select asp-for="MestoId" asp-items="Model.Mesta" class="form-control"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="ProizvodjacId" class="control-label"></label>
+                <select asp-for="ProizvodjacId" asp-items="Model.Proizvodjaci" class="form-control"></select>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Nazad na listu stolova</a>
+</div>
+

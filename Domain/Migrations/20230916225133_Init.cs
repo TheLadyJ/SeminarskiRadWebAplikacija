@@ -255,7 +255,7 @@ namespace Domain.Migrations
                         column: x => x.KeteringFirmaId,
                         principalTable: "KeteringFirme",
                         principalColumn: "KeteringFirmaId",
-                        onDelete: ReferentialAction.NoAction);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -309,7 +309,7 @@ namespace Domain.Migrations
                         column: x => x.RadnikId,
                         principalTable: "AspNetUsers",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.NoAction);
                     table.ForeignKey(
                         name: "FK_Rezervacije_KeteringMeniji_KeteringMeniId",
                         column: x => x.KeteringMeniId,
@@ -340,21 +340,21 @@ namespace Domain.Migrations
                 name: "RezervacijaSto",
                 columns: table => new
                 {
-                    RezervacijaId = table.Column<int>(type: "int", nullable: false),
-                    RbStola = table.Column<int>(type: "int", nullable: false)
+                    RezervacijeRezervacijaId = table.Column<int>(type: "int", nullable: false),
+                    StoloviRbStola = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_RezervacijaSto", x => new { x.RezervacijaId, x.RbStola });
+                    table.PrimaryKey("PK_RezervacijaSto", x => new { x.RezervacijeRezervacijaId, x.StoloviRbStola });
                     table.ForeignKey(
-                        name: "FK_RezervacijaSto_Rezervacije_RezervacijaId",
-                        column: x => x.RezervacijaId,
+                        name: "FK_RezervacijaSto_Rezervacije_RezervacijeRezervacijaId",
+                        column: x => x.RezervacijeRezervacijaId,
                         principalTable: "Rezervacije",
                         principalColumn: "RezervacijaId",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_RezervacijaSto_Stolovi_RbStola",
-                        column: x => x.RbStola,
+                        name: "FK_RezervacijaSto_Stolovi_StoloviRbStola",
+                        column: x => x.StoloviRbStola,
                         principalTable: "Stolovi",
                         principalColumn: "RbStola",
                         onDelete: ReferentialAction.NoAction);
@@ -405,9 +405,9 @@ namespace Domain.Migrations
                 column: "KeteringFirmaId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_RezervacijaSto_RbStola",
+                name: "IX_RezervacijaSto_StoloviRbStola",
                 table: "RezervacijaSto",
-                column: "RbStola");
+                column: "StoloviRbStola");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Rezervacije_KeteringMeniId",

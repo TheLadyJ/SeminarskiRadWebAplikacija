@@ -16,5 +16,10 @@ namespace Domain
         public List<Rezervacija> Rezervacije { get; set; }
 
         public List<Sto> Stolovi { get; set; }
+
+        public override string? ToString()
+        {
+            return Adresa + ", " + PostanskiBroj + ", " + Grad;
+        }
     }
 }

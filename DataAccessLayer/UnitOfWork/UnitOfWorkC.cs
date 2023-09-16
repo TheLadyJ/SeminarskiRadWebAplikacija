@@ -20,13 +20,22 @@ namespace DataAccessLayer.UnitOfWork
             RadnikRepository = new RadnikRepository(context);
             RezervacijaRepository = new RezervacijaRepository(context);
             StoRepository = new StoRepository(context);
-
+            ProizvodjacRepository = new ProizvodjacRepository(context);
+            KeteringFirmaRepository = new KeteringFirmaRepository(context);
+            KeteringMeniRepository = new KeteringMeniRepository(context);
+            TipProslaveRepository = new TipProslaveRepository(context);
+            MestoRepository = new MestoRepository(context);
         }
 
         public IKlijentRepository KlijentRepository { get; set; }
         public IRadnikRepository RadnikRepository { get; set; }
         public IRezervacijaRepository RezervacijaRepository { get; set; }
         public IStoRepository StoRepository { get; set; }
+        public IProizvodjacRepository ProizvodjacRepository { get; set; }
+        public IKeteringFirmaRepository KeteringFirmaRepository { get; set; }
+        public IKeteringMeniRepository KeteringMeniRepository { get; set; }
+        public ITipProslaveRepository TipProslaveRepository { get; set; }
+        public IMestoRepository MestoRepository { get; set; }
 
         public void Save()
         {

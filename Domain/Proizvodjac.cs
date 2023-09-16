@@ -14,5 +14,10 @@ namespace Domain
         public string Email { get; set; }
 
         public List<Sto> Stolovi { get; set; }
+
+        public override string? ToString()
+        {
+            return NazivProizvodjaca + " (" + Telefon + " / " + Email + ")";
+        }
     }
 }

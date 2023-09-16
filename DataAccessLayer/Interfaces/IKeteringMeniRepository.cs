@@ -7,8 +7,7 @@ using System.Threading.Tasks;
 
 namespace DataAccessLayer.Interfaces
 {
-    public interface IStoRepository : IRepository<Sto>
+    public interface IKeteringMeniRepository : IRepository<KeteringMeni>
     {
-        public bool PossibleToDelete(int RbStola);
     }
 }

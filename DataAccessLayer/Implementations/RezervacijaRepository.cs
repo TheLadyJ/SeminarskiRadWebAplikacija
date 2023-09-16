@@ -30,22 +30,22 @@ namespace DataAccessLayer.Implementations
 
         public List<Rezervacija> GetAll()
         {
-            return context.Rezervacije.ToList();
+            return context.Rezervacije.Include(r => r.Klijent).Include(r => r.Radnik).Include(r => r.KeteringMeni).Include(r => r.Mesto).Include(r => r.TipProslave).ToList();
         }
 
         public List<Rezervacija> SearchBy(Expression<Func<Rezervacija, bool>> predicate)
         {
-            return context.Rezervacije.Where(predicate).ToList();
+            return context.Rezervacije.Include(r => r.Klijent).Include(r => r.Radnik).Include(r => r.KeteringMeni).Include(r => r.Mesto).Include(r => r.TipProslave).Where(predicate).ToList();
         }
 
         public Rezervacija SearchById(Rezervacija entity)
         {
-            return context.Rezervacije.Single(r => r.RezervacijaId == entity.RezervacijaId);
+            return context.Rezervacije.Include(r => r.Klijent).Include(r => r.Radnik).Include(r => r.KeteringMeni).Include(r => r.Mesto).Include(r => r.TipProslave).Single(r => r.RezervacijaId == entity.RezervacijaId);
         }
 
         public Rezervacija SearchByIntId(int id)
         {
-            return context.Rezervacije.Single(r => r.RezervacijaId == id);
+            return context.Rezervacije.Include(r => r.Klijent).Include(r => r.Radnik).Include(r => r.KeteringMeni).Include(r => r.Mesto).Include(r => r.TipProslave).Single(r => r.RezervacijaId == id);
         }
 
         public void Update(Rezervacija entity)

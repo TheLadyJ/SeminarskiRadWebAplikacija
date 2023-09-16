@@ -1,4 +1,5 @@
-﻿@model IEnumerable<Domain.Sto>
+﻿@using Domain;
+@model IEnumerable<Domain.Sto>
 
 @{
     ViewData["Title"] = "Index";
@@ -13,45 +14,28 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.RbStola)
-            </th>
-            <th>
                 @Html.DisplayNameFor(model => model.Kapacitet)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.CenaStola)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ProizvodjacId)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.MestoId)
+                @Html.DisplayNameFor(model => model.Mesto)
             </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
+        @foreach (Sto item in Model)
+        {
         <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.RbStola)
-            </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Kapacitet)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.CenaStola)
+                    @item.Mesto.ToString()
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.ProizvodjacId)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.MestoId)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                @Html.ActionLink("Izmeni", "Edit", new { id = item.RbStola }) |
+                    @Html.ActionLink("Prikaži detalje", "Details", new { id = item.RbStola }) |
+                    @Html.ActionLink("Obriši", "Delete", new { id = item.RbStola })
             </td>
         </tr>
 }
