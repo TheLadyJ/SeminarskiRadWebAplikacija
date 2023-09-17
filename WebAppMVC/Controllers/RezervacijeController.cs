@@ -19,7 +19,6 @@ namespace WebAppMVC.Controllers
         public RezervacijeController(IUnitOfWork unitOfWork)
         {
             this.unitOfWork = unitOfWork;
-            rezervisaniStolovi = new List<StoViewModel>();
         }
 
         public IActionResult Index()
