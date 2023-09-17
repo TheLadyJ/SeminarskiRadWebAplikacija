@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace Domain
 {
+    /// <summary>
+    /// Klasa koja predstavlja mesto.
+    /// </summary>
     public class Mesto
     {
         public int MestoId { get; set; }

@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace Domain
 {
+    /// <summary>
+    /// Klasa koja predstavlja tip proslave.
+    /// </summary>
     public class TipProslave
     {
         public int TipProslaveId { get; set; }

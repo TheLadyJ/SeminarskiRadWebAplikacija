@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace Domain
 {
+    /// <summary>
+    /// Klasa koja predstavlja proizvodjac stola.
+    /// </summary>
     public class Proizvodjac
     {
         public int ProizvodjacId { get; set; }

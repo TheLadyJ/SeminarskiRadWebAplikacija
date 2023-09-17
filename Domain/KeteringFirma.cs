@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace Domain
 {
+    /// <summary>
+    /// Klasa koja predstavlja ketering firmu. Na osnovu ketering firme, izlistavaju se ketering meniji firme i bira se meni za proslavu (rezervaciju).
+    /// </summary>
     public class KeteringFirma
     {
         public int KeteringFirmaId { get; set; }

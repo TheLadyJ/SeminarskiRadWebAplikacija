@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace Domain
 {
+    /// <summary>
+    /// Klasa koja predstavlja ketering meni koji se sluzi na proslavi.
+    /// </summary>
     public class KeteringMeni
     {
         public int KeteringMeniId { get; set; }
