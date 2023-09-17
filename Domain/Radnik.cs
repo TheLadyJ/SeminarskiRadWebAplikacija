@@ -16,5 +16,10 @@ namespace Domain
         public string Lozinka { get; set; }
 
         public List<Rezervacija> Rezervacije { get; set; }
+
+        public override string ToString()
+        {
+            return Ime + " " + Prezime;
+        }
     }
 }

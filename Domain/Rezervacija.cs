@@ -8,7 +8,7 @@ namespace Domain
 {
     public class Rezervacija
     {
-        public int RezervacijaId { get; set; } = -1;
+        public int RezervacijaId { get; set; }
         public DateTime DatumVremeOd { get; set; }
         public DateTime DatumVremeDo { get; set; }
         public TipProslave TipProslave { get; set; }
@@ -22,7 +22,6 @@ namespace Domain
         public int MestoId { get; set; }
         public KeteringMeni KeteringMeni { get; set; }
         public int KeteringMeniId { get; set; }
-
         public List<Sto> Stolovi { get; set; }
     }
 }

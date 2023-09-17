@@ -1,0 +1,149 @@
+﻿@model WebAppMVC.Models.CreateRezervacijaViewModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Kreiraj novu rezervaciju</h1>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create" id="formCreate">
+            <div asp-validation-summary="All" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="RadnikId" class="control-label">Radnik</label>
+                <select asp-for="RadnikId" asp-items="Model.Radnici" class="form-control" disabled></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="KlijentId" class="control-label">Klijent</label>
+                <select asp-for="KlijentId" asp-items="Model.Klijenti" class="form-control"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="MestoId" class="control-label">Mesto</label>
+                <select asp-for="MestoId" asp-items="Model.Mesta" class="form-control" id="mesto"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="DatumVremeOd" class="control-label">Datum i vreme OD (dd.MM.YYYY. HH:mm)</label>
+                <input asp-for="DatumVremeOd" class="form-control" />
+                <span asp-validation-for="DatumVremeOd" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DatumVremeDo" class="control-label">Datum i vreme DO (dd.MM.YYYY. HH:mm)</label>
+                <input asp-for="DatumVremeDo" class="form-control" />
+                <span asp-validation-for="DatumVremeDo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TipProslaveId" class="control-label">Tip proslave</label>
+                <select asp-for="TipProslaveId" asp-items="Model.TipoviProslave" class="form-control"></select>
+
+            </div>
+            <div class="form-group">
+                <label asp-for="UkupnaCena" class="control-label">Ukupna cena</label>
+                <input asp-for="UkupnaCena" class="form-control" />
+                <span asp-validation-for="UkupnaCena" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="control-label">Izaberite ketering firmu u kojoj biste poručili meni</label>
+                <select asp-items="Model.KeteringFirme" class="form-control" id="keteringFirma"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="KeteringMeniId" class="control-label">Ketering meni</label>
+                <select asp-for="KeteringMeniId" asp-items="Model.KeteringMeniji" class="form-control" id="keteringMeni"></select>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label">Odaberite sto za dodavanje na listu rezervisanih stolova (prethodno je neophodno odabrati mesto rezervacije)</label>
+                <select asp-items="Model.Stolovi" class="form-control" id="sto"></select>
+            </div>
+            <div class="form-group">
+                <button class="btn btn-dark" id="addTable" type="button">Rezerviši sto</button>
+            </div>
+
+            <table id="rezStolovi">
+                <thead>
+                    <tr>
+                        <th>Kapacitet</th>
+                        <th>Cena stola</th>
+                        <th>Proizvođač</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+
+            <div class="form-group">
+                <input type="submit" value="Kreiraj" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Nazad na listu rezervacija</a>
+</div>
+
+
+@section Scripts{
+    <script>
+
+        document.getElementById('addTable').addEventListener('click', function () {
+            var rbStolaValue = $('#sto').val();
+
+            $.ajax({
+                type: 'POST',
+                url: "@Url.Action("AddTable", "Rezervacije")",
+                data: {rbStola: rbStolaValue},
+                success: function (data) {
+                    $('#rezStolovi tbody').append('<tr><td>' + data.Kapacitet + '</td><td>' + data.CenaStola + '</td><td>' + data.Proizvodjac + '</td></tr>');
+                    model.RezervisaniStolovi.push(data);
+                },
+                error: function (error) {
+                    console.log('Error: ' + JSON.stringify(error));
+                }
+            });
+
+            
+        });
+
+        document.getElementById('keteringFirma').addEventListener('change', function () {
+            var keteringFirmaValue = this.value; 
+
+            $.ajax({
+                type: 'GET',
+                url: "@Url.Action("LoadKeteringMenijiList", "Rezervacije")", 
+                data: { keteringFirmaId: keteringFirmaValue },
+                success: function (data) {
+                    $('#keteringMeni').empty();
+
+                    for (var i = 0; i < data.length; i++) {
+                        $('#keteringMeni').append('<option value="' + data[i].value + '">' + data[i].text + '</option>');
+                    }
+                },
+                error: function (error) {
+                    console.error('Error: ' + JSON.stringify(error));
+                }
+            });
+        });
+
+        document.getElementById('mesto').addEventListener('change', function () {
+            var mestoValue = this.value;
+
+            $.ajax({
+                type: 'GET',
+                url: "@Url.Action("LoadStoloviList", "Rezervacije")",  
+                data: { mestoId: mestoValue },
+                success: function (data) {
+                    $('#sto').empty();
+
+                    for (var i = 0; i < data.length; i++) {
+                        $('#sto').append('<option value="' + data[i].value + '">' + data[i].text + '</option>');
+                    }
+                },
+                error: function (error) {
+                    console.error('Error: ' + JSON.stringify(error));
+                }
+            });
+        });
+    </script>
+}

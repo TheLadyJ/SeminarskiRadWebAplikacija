@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Win32;
+using NuGet.Protocol.Plugins;
 using WebAppMVC.Models;
 
 namespace WebAppMVC.Controllers
@@ -29,6 +30,14 @@ namespace WebAppMVC.Controllers
         [HttpPost]
         public async Task<IActionResult> Register([FromForm] RegisterViewModel register)
         {
+            var radnikPostoji = await manager.FindByNameAsync(register.KorisnickoIme);
+
+            if (radnikPostoji != null)
+            {
+                ModelState.AddModelError(string.Empty, "Već postoji radnik sa unetim korisnickim imenom");
+                return View();
+            }
+
             Radnik radnik = new Radnik
             {
                 KorisnickoIme = register.KorisnickoIme,
@@ -40,18 +49,17 @@ namespace WebAppMVC.Controllers
 
             var result = await manager.CreateAsync(radnik, register.Lozinka);
 
-            if (result.Succeeded)
+            if (!result.Succeeded)
             {
-                return RedirectToAction("Login");
-            }
-            else
-            {
+
                 foreach (IdentityError err in result.Errors)
                 {
                     ModelState.AddModelError(err.Code, err.Description);
                 }
                 return View();
             }
+
+            return RedirectToAction("Login");
 
         }
         #endregion

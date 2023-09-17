@@ -13,32 +13,21 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.RezervacijaId)
+                @Html.DisplayNameFor(model => model.Radnik)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.DatumVremeOd)
+                @Html.DisplayNameFor(model => model.Klijent)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.DatumVremeDo)
+                Datum i vreme OD
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.TipProslaveId)
+                Datum i vreme DO
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.UkupnaCena)
+                Mesto
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.RadnikId)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.KlijentId)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.MestoId)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.KeteringMeniId)
-            </th>
+
             <th></th>
         </tr>
     </thead>
@@ -46,36 +35,21 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.RezervacijaId)
+                @item.Radnik.ToString();
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.DatumVremeOd)
+                @item.Klijent.ToString();
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.DatumVremeDo)
+                @item.DatumVremeOd;
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.TipProslaveId)
+                @item.DatumVremeDo;
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.UkupnaCena)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.RadnikId)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.KlijentId)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.MestoId)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.KeteringMeniId)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                @Html.ActionLink("Izmeni", "Edit", new { id = item.RezervacijaId }) |
+                @Html.ActionLink("Prikaži detalje", "Details", new { id = item.RezervacijaId }) |
+                @Html.ActionLink("Obriši", "Delete", new { id = item.RezervacijaId })
             </td>
         </tr>
 }

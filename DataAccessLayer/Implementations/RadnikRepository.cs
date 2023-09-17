@@ -41,12 +41,12 @@ namespace DataAccessLayer.Implementations
 
         public Radnik SearchById(Radnik entity)
         {
-            return context.Radnici.Single(r => r.RadnikId == entity.RadnikId);
+            return context.Radnici.Single(r => r.Id == entity.RadnikId);
         }
 
         public Radnik SearchByIntId(int id)
         {
-            return context.Radnici.Single(r => r.RadnikId == id);
+            return context.Radnici.Single(r => r.Id == id);
         }
 
         public Radnik SearchByUsernamePassword(string username, string password)

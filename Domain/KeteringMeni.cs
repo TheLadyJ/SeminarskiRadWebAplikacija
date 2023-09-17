@@ -18,5 +18,10 @@ namespace Domain
         public int KeteringFirmaId { get; set; }
 
         public List<Rezervacija> Rezervacije { get; set; }
+
+        public override string? ToString()
+        {
+            return $"Predjelo: {Predjelo}, Glavno jelo: {GlavnoJelo}, Dezert: {Dezert}, Cena po osobi: {CenaHranePoOsobi}";
+        }
     }
 }

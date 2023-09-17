@@ -15,5 +15,10 @@ namespace Domain
         public string Email { get; set; }
 
         public List<KeteringMeni> Meniji { get; set; }
+
+        public override string? ToString()
+        {
+            return $"{NazivFirme} ({Telefon} / {Email})";
+        }
     }
 }

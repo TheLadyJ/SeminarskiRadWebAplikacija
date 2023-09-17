@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Diagnostics;
+using System.Text.Json.Serialization;
 
 internal class Program
 {

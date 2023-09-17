@@ -16,5 +16,10 @@ namespace Domain
 
         public List<Rezervacija> Rezervacije { get; set; }
 
+        public override string? ToString()
+        {
+            return $"{Ime} {Prezime} ({Telefon} / {Email})";
+        }
+
     }
 }
