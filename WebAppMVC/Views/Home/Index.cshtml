@@ -1,6 +1,14 @@
-﻿@{
+﻿@model VremenskaPrognozaViewModel
+
+@{
     ViewData["Title"] = "Home Page";
 }
 
 <h1>Dobrodošli, @User.Identity.Name!</h1>
 <p>Imate privilegije da kreirate nove klijente, stolove i rezervacije.</p>
+
+<br/>
+
+<h3>Informacije o vremenu</h3>
+<p>Grad: @Model.location.name</p>
+<p>Temperatura: @Model.current.temp_c &deg;C</p>

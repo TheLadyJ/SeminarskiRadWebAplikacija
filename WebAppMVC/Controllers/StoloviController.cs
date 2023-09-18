@@ -1,11 +1,14 @@
 ﻿using DataAccessLayer.UnitOfWork;
 using Domain;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using WebAppMVC.Models;
 
 namespace WebAppMVC.Controllers
 {
+    [Authorize]
+
     public class StoloviController : Controller
     {
         private readonly IUnitOfWork unitOfWork;

@@ -1,5 +1,6 @@
 ﻿using DataAccessLayer.UnitOfWork;
 using Domain;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
@@ -12,6 +13,8 @@ using WebAppMVC.Models;
 
 namespace WebAppMVC.Controllers
 {
+    [Authorize]
+
     public class RezervacijeController : Controller
     {
         private readonly IUnitOfWork unitOfWork;
